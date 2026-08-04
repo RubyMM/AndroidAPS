@@ -113,7 +113,6 @@ class ConstraintsCheckerImplTest : TestBaseWithProfile() {
         whenever(rh.gs(app.aaps.core.ui.R.string.itmustbepositivevalue)).thenReturn("it must be positive value")
         whenever(rh.gs(R.string.smbnotallowedinopenloopmode)).thenReturn("SMB not allowed in open loop mode")
         whenever(rh.gs(app.aaps.core.ui.R.string.pumplimit)).thenReturn("pump limit")
-        whenever(rh.gs(R.string.smbalwaysdisabled)).thenReturn("SMB always and after carbs disabled because active BG source doesn\\'t support advanced filtering")
         whenever(rh.gs(app.aaps.core.ui.R.string.limitingpercentrate)).thenReturn("Limiting max percent rate to %1\$d%% because of %2\$s")
         whenever(rh.gs(app.aaps.core.ui.R.string.limitingbolus)).thenReturn("Limiting bolus to %1\$.1f U because of %2\$s")
         whenever(rh.gs(app.aaps.core.ui.R.string.limitingbasalratio)).thenReturn("Limiting max basal rate to %1\$.2f U/h because of %2\$s")
@@ -225,9 +224,9 @@ class ConstraintsCheckerImplTest : TestBaseWithProfile() {
     fun isAdvancedFilteringEnabledTest() {
         whenever(activePlugin.activeBgSource).thenReturn(glimpPlugin)
         val c = constraintChecker.isAdvancedFilteringEnabled()
-        assertThat(c.reasonList).hasSize(1) // Safety
-        assertThat(c.mostLimitedReasonList).hasSize(1) // Safety
-        assertThat(c.value()).isFalse()
+        assertThat(c.reasonList).isEmpty()
+        assertThat(c.mostLimitedReasonList).isEmpty()
+        assertThat(c.value()).isTrue()
     }
 
     // SMB should limit

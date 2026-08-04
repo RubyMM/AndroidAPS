@@ -33,3 +33,10 @@ wear/pumpcontrol/*
 /buildSrc/.kotlin
 .claude/settings.local.json
 .claude/CLAUDE_COMMANDS.md
+
+# Environment variables (API keys, secrets)
+.env
+.codegraph/
+
+# Daemon process ID file (runtime artifact)
+daemon.pid
